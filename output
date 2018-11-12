@@ -1,0 +1,13 @@
+nohup: ignoring input
+(node:15566) DeprecationWarning: `open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/4.x/docs/connections.html#use-mongo-client
+Connected
+[0mGET /? [32m200 [0m6.689 ms - 1241[0m
+[0mGET /stylesheets/style.css [32m200 [0m2.952 ms - 427[0m
+[0mGET /javascripts/comments.js [32m200 [0m3.809 ms - 1634[0m
+[0mGET /? [32m200 [0m1.757 ms - 1241[0m
+[0mGET /javascripts/comments.js [32m200 [0m1.039 ms - 1634[0m
+[0mGET /stylesheets/style.css [32m200 [0m0.860 ms - 427[0m
+[0mGET http://5.188.210.12/echo.php [33m404 [0m10.025 ms - 1843[0m
+[0mGET / [32m200 [0m0.561 ms - 1241[0m
+[0mGET /javascripts/comments.js [32m200 [0m0.557 ms - 1634[0m
+[0mGET /stylesheets/style.css [32m200 [0m0.541 ms - 427[0m

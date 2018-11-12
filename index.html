@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Comments!</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="javascripts/comments.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kodchasan|Kumar+One+Outline" rel="stylesheet">
+</head>
+
+<body>
+    <div class="form">
+        <h1>Comment Board</h1>
+        <form id="commentForm" action="">
+            <label for="name">Name: </label><input type="text" id="name" placeholder="Name"><br>
+            <label for="comment">Comment: </label><input type="text" id="comment" placeholder="Comment"><br>
+        </form>
+        <button id="postComment">Post Comment</button>
+        <button class="getComments">Get Comments</button>
+        <button id="deleteComments">Delete All</button>
+        <form>
+            <label for="search">Search: </label><input type="text" id="search" placeholder="Search"><br/>
+        </form>
+        <button class="getComments"> Search</button>
+        <div id="done"></div>
+    </div>
+    <div class="comments">
+        
+        <div id="comments"><div id="temp">Comments will appear here!</div></div>
+    </div>
+    
+</body>
+
+</html>
