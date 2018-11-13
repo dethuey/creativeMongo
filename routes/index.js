@@ -27,7 +27,7 @@ router.post('/comment', function(req, res, next) {
     console.log(newcomment);
     newcomment.save(function(err, post) {
         if (err) return console.error(err);
-        console.log(post);
+        console.log("POST" + post);
         res.sendStatus(200);
     });
 });

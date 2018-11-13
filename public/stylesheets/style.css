@@ -15,6 +15,14 @@ a {
   width:30%;
   float:left;
 }
+
+.trending {
+  margin-top: 80px;
+  padding:20px;
+  border:solid;
+  border-color: #cc510b;
+  width:60%;
+}
 .comments{
   background-color: #e2b5b5;
   width:50%;
