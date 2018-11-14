@@ -16,15 +16,15 @@ $(document).ready(function() {
             }
         })
         
-                var URL = "comment?q=";
+        var URL = "comment?q=";
         console.log(URL);
         $.getJSON(URL, function(data) {
             console.log(data);
             var everything = '<h2>Comments:</h2>';//<ul>';
-            for (var comment in data) {
-            //for (var i = data.length - 1; i >= 0; i--) {
-                var com = data[comment];
-                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">Caption:' + com.Comment +'</p></div>';
+            //for (var comment in data) {
+            for (var i = data.length - 1; i >= 0; i--) {
+                var com = data[i]; //comment];
+                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">' + com.Comment +'</p></div>';
                // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
             }
             $("#comments").html(everything);
