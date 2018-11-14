@@ -12,6 +12,11 @@ var gratitudeSchema = mongoose.Schema({ //Defines the Schema for this database
     Votes: {type: Number, default: 0},
 });
 
+/*gratitudeSchema.methods.upvote = function(cb) {
+  this.Votes += 1;
+  this.save(cb);
+};*/
+
 var Post = mongoose.model('Post', gratitudeSchema); //Makes an object from that schema as a model
 
 var db = mongoose.connection; //Saves the connection as a variable to use
@@ -51,6 +56,14 @@ router.get('/comment', function(req, res, next) {
         }
     })
 });
+
+//Trying to update the upvotes
+/*router.put('/comment/:comment/upvote', function(req, res, next) { //put edits something that's already there
+  req.comment.upvote(function(err, comment){
+    if (err) { return next(err); }
+    res.json(comment);
+  });
+});*/
 
 router.post('/delete', function(req, res, next) {
     console.log("in delete route");

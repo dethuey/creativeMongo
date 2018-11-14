@@ -20,7 +20,7 @@ $(document).ready(function() {
         console.log(URL);
         $.getJSON(URL, function(data) {
             console.log(data);
-            var everything = '<h2>Comments:</h2>';//<ul>';
+            var everything = ''; //'<h2>Comments:</h2>';//<ul>';
             //for (var comment in data) {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
@@ -47,6 +47,7 @@ $(document).ready(function() {
             }
         })
     });
+    
     
     $( document ).ready(function() {
         resize();
@@ -92,7 +93,12 @@ $(document).ready(function() {
         resize();
     });
     
+    //Trying to get the click functionality of upvotes to work
+    /*$("span").click(function(){
+        alert($(this).attr("id"));
+    });
+    
     $("#upvote").click(function() {
         console.log("Upvote clicked");
-    });
+    });*/
 });
