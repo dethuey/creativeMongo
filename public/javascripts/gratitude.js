@@ -15,6 +15,19 @@ $(document).ready(function() {
                 console.log("test");
             }
         })
+        
+                var URL = "comment?q=";
+        console.log(URL);
+        $.getJSON(URL, function(data) {
+            console.log(data);
+            var everything = '<h2>Comments:</h2>';//<ul>';
+            for (var comment in data) {
+                com = data[comment];
+                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">Caption:' + com.Comment +'</p></div>';
+               // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
+            }
+            $("#comments").html(everything);
+        })
     });
     
     $("#deleteComments").click(function() {
@@ -33,19 +46,45 @@ $(document).ready(function() {
         })
     });
     
-    $(".getComments").click(function() {
-        var name = $("#search").val();
-        var URL = "comment?q=" + name;
+    $( document ).ready(function() {
+        resize();
+        var URL = "comment?q=";
         console.log(URL);
         $.getJSON(URL, function(data) {
             console.log(data);
-            var everything = '<h2>Comments:</h2><ul>';
+            var everything = '<h2>Comments:</h2>';//<ul>';
             for (var comment in data) {
                 com = data[comment];
-                everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
+                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">Caption:' + com.Comment +'</p></div>';
             }
-            everything += "</ul>";
             $("#comments").html(everything);
+            resize();
         })
+    });
+    
+    function resize(){
+        console.log()
+        var elements = document.getElementsByClassName("imageCard");
+
+        if ($(window).width() > 1500){
+            for (var i = 0; i < elements.length; i++) {
+                console.log("test");
+                elements[i].style.width=(27 + "%");
+            }
+        } else if($(window).width() > 970){
+            for (var i = 0; i < elements.length; i++) {
+                console.log("test");
+                elements[i].style.width=(40 + "%");
+            }            
+        } else {
+            for (var i = 0; i < elements.length; i++) {
+                console.log("test");
+                elements[i].style.width=(80 + "%");
+            }        
+            
+        } 
+    }
+    $( window ).resize(function() {
+        resize();
     });
 });

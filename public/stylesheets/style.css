@@ -12,7 +12,7 @@ a {
 }
 
 .form{
-  width:30%;
+  width:20%;
   float:left;
 }
 
@@ -24,8 +24,7 @@ a {
   width:60%;
 }
 .comments{
-  background-color: #e2b5b5;
-  width:50%;
+  width:80%;
   float:left;
   min-height:595px;
   margin-bottom:20px;
@@ -39,4 +38,16 @@ h2{
   text-align:center;
   vertical-align:middle;
   font-size:50px;
+}
+
+.caption{
+  
+}
+
+.imageCard{
+  width:95%;
+  background-color:lightgray;
+  padding:15px;
+  margin:5px;
+  display:inline-block;
 }
