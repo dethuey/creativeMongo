@@ -8,7 +8,8 @@ mongoose.connect('mongodb://localhost/gratitude', { useNewUrlParser: true }); //
 
 var gratitudeSchema = mongoose.Schema({ //Defines the Schema for this database
     Image: String,
-    Caption: String
+    Caption: String,
+    Votes: {type: Number, default: 0},
 });
 
 var Post = mongoose.model('Post', gratitudeSchema); //Makes an object from that schema as a model

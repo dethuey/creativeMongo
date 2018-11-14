@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#postComment").click(function() {
-        var myobj = { Name: $("#name").val(), Comment: $("#comment").val() };
+        var myobj = { Image: $("#name").val(), Caption: $("#comment").val() };
         var jobj = JSON.stringify(myobj);
         $("#json").text(jobj);
 
@@ -24,7 +24,8 @@ $(document).ready(function() {
             //for (var comment in data) {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
-                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">' + com.Comment +'</p></div>';
+                everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
+                everything += '<p class="caption"><span id="upvote" class="glyphicon glyphicon-heart"> ' + com.Votes + '</span> ' + com.Caption +'</p></div>';
                // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
             }
             $("#comments").html(everything);
@@ -32,7 +33,7 @@ $(document).ready(function() {
     });
     
     $("#deleteComments").click(function() {
-        var myobj = { Name: $("#name").val(), Comment: $("#comment").val() };
+        var myobj = { Image: $("#name").val(), Caption: $("#comment").val() };
         var jobj = JSON.stringify(myobj);
         $("#json").text(jobj);
 
@@ -53,11 +54,12 @@ $(document).ready(function() {
         console.log(URL);
         $.getJSON(URL, function(data) {
             console.log(data);
-            var everything = '<h2>Comments:</h2>';//<ul>';
-            for (var comment in data) {
-            //for (var i = data.length - 1; i >= 0; i--) {
-                var com = data[comment];
-                everything += '<div class="imageCard"><img src="'+ com.Name + '"width="100%" class="image"><p class="caption">Caption:' + com.Comment +'</p></div>';
+            var everything = ''; // = '<h2>Comments:</h2>';//<ul>';
+            //for (var comment in data) {
+            for (var i = data.length - 1; i >= 0; i--) {
+                var com = data[i]; //comment];
+                everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
+                everything += '<p class="caption"><span id="upvote" class="glyphicon glyphicon-heart"> ' + com.Votes + '</span> ' + com.Caption +'</p></div>';
             }
             $("#comments").html(everything);
             resize();
@@ -88,5 +90,9 @@ $(document).ready(function() {
     }
     $( window ).resize(function() {
         resize();
+    });
+    
+    $("#upvote").click(function() {
+        console.log("Upvote clicked");
     });
 });
