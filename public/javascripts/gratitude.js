@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
     $("#postComment").click(function() {
         var myobj = { Image: $("#name").val(), Caption: $("#comment").val() };
         var jobj = JSON.stringify(myobj);
@@ -25,7 +26,7 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<p class="caption"><span id="upvote" class="glyphicon glyphicon-heart"> ' + com.Votes + '</span> ' + com.Caption +'</p></div>';
+                everything += '<p class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>  ' + com.Caption +'</p></div>';
                // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
             }
             $("#comments").html(everything);
@@ -47,6 +48,28 @@ $(document).ready(function() {
             }
         })
     });
+
+    
+    $("body").on('click', ".upvote", function(e) {
+        e.preventDefault();
+        //alert("CLICKED!");
+        //console.log("EVENT = " + e);
+        //alert($(this).attr("id"));
+        var id = $(this).attr("id");
+        var url = "comment/" + id + "/upvote";
+        $.ajax({
+            url: url,
+            type: "PUT",
+            success: function(data, textStatus) {
+                console.log("PUT worked");
+                //console.log(data);
+                //console.log("ID VAL = " + $("#" + id).text());
+                var newUpvote = parseInt($("#" + id).text()) + 1;
+                $("#" + id).text(" " + newUpvote);
+            }
+        })
+
+    });
     
     
     $( document ).ready(function() {
@@ -60,7 +83,7 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<p class="caption"><span id="upvote" class="glyphicon glyphicon-heart"> ' + com.Votes + '</span> ' + com.Caption +'</p></div>';
+                everything += '<p class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>  ' + com.Caption +'</p></div>';
             }
             $("#comments").html(everything);
             resize();
@@ -92,6 +115,12 @@ $(document).ready(function() {
     $( window ).resize(function() {
         resize();
     });
+    
+    /*function getId(element){
+        var id = $(element).attr(“id”);
+        console.log("Span clicked");
+        console.log(id);
+    }*/
     
     //Trying to get the click functionality of upvotes to work
     /*$("span").click(function(){

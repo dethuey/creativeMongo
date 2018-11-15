@@ -12,10 +12,10 @@ var gratitudeSchema = mongoose.Schema({ //Defines the Schema for this database
     Votes: {type: Number, default: 0},
 });
 
-/*gratitudeSchema.methods.upvote = function(cb) {
+gratitudeSchema.methods.upvote = function(cb) {
   this.Votes += 1;
   this.save(cb);
-};*/
+};
 
 var Post = mongoose.model('Post', gratitudeSchema); //Makes an object from that schema as a model
 
@@ -58,12 +58,21 @@ router.get('/comment', function(req, res, next) {
 });
 
 //Trying to update the upvotes
-/*router.put('/comment/:comment/upvote', function(req, res, next) { //put edits something that's already there
+router.param('like', function(req, res, next, id) { //param = syntax to create a helper function called 'comment'
+  Post.findById(id, function (err, comment){
+    if (err) { return next(err); }
+    if (!comment) { return next(new Error("can't find comment")); }
+    req.comment = comment;
+    return next();
+  });
+});
+
+router.put('/comment/:like/upvote', function(req, res, next) { //put edits something that's already there
   req.comment.upvote(function(err, comment){
     if (err) { return next(err); }
     res.json(comment);
   });
-});*/
+});
 
 router.post('/delete', function(req, res, next) {
     console.log("in delete route");
