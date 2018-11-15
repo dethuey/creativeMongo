@@ -26,7 +26,8 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<p class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>  ' + com.Caption +'</p></div>';
+                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                everything += '<p>' + com.Caption +'</p></div></div>';
                // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
             }
             $("#comments").html(everything);
@@ -83,7 +84,8 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<p class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>  ' + com.Caption +'</p></div>';
+                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + '</span>';
+                everything += '<p>' + com.Caption +'</p></div></div>';
             }
             $("#comments").html(everything);
             resize();
