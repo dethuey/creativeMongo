@@ -23,11 +23,11 @@ a {
 }
 
 .trending {
-  margin-top: 80px;
+  margin-top: 50px;
   padding:20px;
   border:solid;
   border-color: #cc510b;
-  width:60%;
+  width:100%;
 }
 
 .buffer {
@@ -67,6 +67,5 @@ h2{
   width:100%;
   background-color:lightgray;
   padding:15px;
-  margin:5px;
   display:inline-block;
 }

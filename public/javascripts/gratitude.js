@@ -97,6 +97,8 @@ $(document).ready(function() {
     
     
     $( document ).ready(function() {
+        mostPopular = null;
+        mostPopularVotes = 0
         resize();
         var URL = "comment?q=";
         console.log(URL);
