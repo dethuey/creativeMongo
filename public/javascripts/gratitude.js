@@ -120,9 +120,9 @@ $(document).ready(function() {
             $("#comments").html(everything);
             if (mostPopular != null){
                 var pop = "";
-                pop += '<div class="popCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                pop += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
-                pop += '<p>' + com.Caption +'</p></div></div>';
+                pop += '<div class="popCard"><img src="'+ mostPopular.Image + '"width="100%" class="image">';
+                pop += '<div class="caption"><span id="' + mostPopular._id + '" class="glyphicon glyphicon-heart upvote"> ' + mostPopular.Votes + ' </span>';
+                pop += '<p>' + mostPopular.Caption +'</p></div></div>';
                 $(".trending").html(pop);
             }
             resize();
