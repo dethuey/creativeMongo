@@ -2,7 +2,7 @@ body {
   padding: 50px;
   font-family: 'Kodchasan', sans-serif;
   font-size: 20px;
-  background-color:#efefef;
+  background-color:#f2e2bf;
   color:#3f3f3f;
   width:100%;
 }
@@ -12,14 +12,20 @@ a {
 }
 
 .title {
-  margin-left:10%;
+  padding-top:1%;
+  padding-left:10%;
+  padding-bottom: 1%;
   margin-bottom: 3%;
+  color:#f2e2bf;
+  background-color:#5e6524;
+  font-weight: bold;
 }
 
 .form{
   width:25%;
   float:left;
   min-width: 250px;
+  color:#673718;
 }
 
 .trending {
@@ -28,6 +34,7 @@ a {
   border:solid;
   border-color: #cc510b;
   width:100%;
+  border-width: 1em;
 }
 
 .buffer {
@@ -57,7 +64,8 @@ h2{
 
 .imageCard{
   width:45%;
-  background-color:lightgray;
+  color:#673718;
+  background-color:#eead3d;
   padding:15px;
   margin:5px;
   display:inline-block;
@@ -65,7 +73,8 @@ h2{
 
 .popCard{
   width:100%;
-  background-color:lightgray;
+  color:#673718;
+  background-color:#eead3d;
   padding:15px;
   display:inline-block;
 }
