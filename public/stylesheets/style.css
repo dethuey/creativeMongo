@@ -19,6 +19,7 @@ a {
 .form{
   width:25%;
   float:left;
+  min-width: 250px;
 }
 
 .trending {
@@ -28,6 +29,7 @@ a {
   border-color: #cc510b;
   width:60%;
 }
+
 .buffer {
   width:5%;
   float:left;
@@ -54,7 +56,15 @@ h2{
 }
 
 .imageCard{
-  width:95%;
+  width:45%;
+  background-color:lightgray;
+  padding:15px;
+  margin:5px;
+  display:inline-block;
+}
+
+.popCard{
+  width:100%;
   background-color:lightgray;
   padding:15px;
   margin:5px;

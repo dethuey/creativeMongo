@@ -1,5 +1,8 @@
 $(document).ready(function() {
     
+    var mostPopular = null;
+    var mostPopularVotes = 0;
+    
     $("#postComment").click(function() {
         var myobj = { Image: $("#name").val(), Caption: $("#comment").val() };
         var jobj = JSON.stringify(myobj);
@@ -21,16 +24,27 @@ $(document).ready(function() {
         console.log(URL);
         $.getJSON(URL, function(data) {
             console.log(data);
-            var everything = ''; //'<h2>Comments:</h2>';//<ul>';
+            var everything = ''; 
             //for (var comment in data) {
             for (var i = data.length - 1; i >= 0; i--) {
-                var com = data[i]; //comment];
+                var com = data[i]; 
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
                 everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
                 everything += '<p>' + com.Caption +'</p></div></div>';
-               // everything += "<li><strong> Name:</strong> " + com.Name + "<br>Comment: " + com.Comment + "</li>";
+            
+                if (com.Votes > mostPopularVotes){
+                    mostPopular = com;
+                    mostPopularVotes = com.Votes;
+                }
             }
             $("#comments").html(everything);
+            if (mostPopular != null){
+                var pop = "";
+                pop += '<div class="popCard"><img src="'+ com.Image + '"width="100%" class="image">';
+                pop += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                pop += '<p>' + com.Caption +'</p></div></div>';
+                $(".trending").html(pop);
+            }
         })
     });
     
@@ -67,6 +81,15 @@ $(document).ready(function() {
                 //console.log("ID VAL = " + $("#" + id).text());
                 var newUpvote = parseInt($("#" + id).text()) + 1;
                 $("#" + id).text(" " + newUpvote);
+                if (data.Votes > mostPopularVotes){
+                    mostPopular = data;
+                    mostPopularVotes = data.Votes;
+                    var pop = "";
+                    pop += '<div class="popCard"><img src="'+ data.Image + '"width="100%" class="image">';
+                    pop += '<div class="caption"><span id="' + data._id + '" class="glyphicon glyphicon-heart upvote"> ' + data.Votes + ' </span>';
+                    pop += '<p>' + data.Caption +'</p></div></div>';
+                    $(".trending").html(pop);
+                }
             }
         })
 
@@ -84,35 +107,60 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + '</span>';
+                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
                 everything += '<p>' + com.Caption +'</p></div></div>';
+                
+                if (com.Votes > mostPopularVotes){
+                    mostPopular = com;
+                    mostPopularVotes = com.Votes;
+                }
             }
             $("#comments").html(everything);
+            if (mostPopular != null){
+                var pop = "";
+                pop += '<div class="popCard"><img src="'+ com.Image + '"width="100%" class="image">';
+                pop += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                pop += '<p>' + com.Caption +'</p></div></div>';
+                $(".trending").html(pop);
+            }
             resize();
         })
     });
     
     function resize(){
-        console.log()
         var elements = document.getElementsByClassName("imageCard");
+        var form = document.getElementsByClassName("form");
+        var comments = document.getElementsByClassName("comments");
 
-        if ($(window).width() > 1500){
+
+
+        if ($(window).width() > 1000){
             for (var i = 0; i < elements.length; i++) {
-                console.log("test");
-                elements[i].style.width=(27 + "%");
+                 elements[i].style.width=(27 + "%");
+             }
+            comments[0].style.width=(70+"%");
+            form[0].style.width=(25 + "%");
+
+        } else if ($(window).width() < 700){
+            for (var i = 0; i < elements.length; i++) {
+                 elements[i].style.width=(85 + "%");
             }
-        } else if($(window).width() > 970){
+            form[0].style.width=(90 + "%");
+            comments[0].style.width=(90+"%");
+        } else if ($(window).width() < 800){
             for (var i = 0; i < elements.length; i++) {
-                console.log("test");
-                elements[i].style.width=(40 + "%");
-            }            
-        } else {
+                 elements[i].style.width=(70 + "%");
+            }
+            form[0].style.width=(25 + "%");
+            comments[0].style.width=(60+"%");
+        }else {
+            comments[0].style.width=(60+"%");
             for (var i = 0; i < elements.length; i++) {
-                console.log("test");
-                elements[i].style.width=(80 + "%");
-            }        
+                 elements[i].style.width=(45 + "%");
+            }
+            form[0].style.width=(25 + "%");
             
-        } 
+         }
     }
     $( window ).resize(function() {
         resize();
