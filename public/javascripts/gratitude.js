@@ -29,7 +29,7 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; 
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                everything += '<div class="caption"><span id="' + com._id + '" class="' + com._id + ' glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
                 everything += '<p>' + com.Caption +'</p></div></div>';
             
                 if (com.Votes > mostPopularVotes){
@@ -41,7 +41,7 @@ $(document).ready(function() {
             if (mostPopular != null){
                 var pop = "";
                 pop += '<div class="popCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                pop += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                pop += '<div class="caption"><span id="' + com._id + '" class="' + com._id + ' glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
                 pop += '<p>' + com.Caption +'</p></div></div>';
                 $(".trending").html(pop);
             }
@@ -71,6 +71,7 @@ $(document).ready(function() {
         //console.log("EVENT = " + e);
         //alert($(this).attr("id"));
         var id = $(this).attr("id");
+        console.log(id);
         var url = "comment/" + id + "/upvote";
         $.ajax({
             url: url,
@@ -79,14 +80,14 @@ $(document).ready(function() {
                 console.log("PUT worked");
                 //console.log(data);
                 //console.log("ID VAL = " + $("#" + id).text());
-                var newUpvote = parseInt($("#" + id).text()) + 1;
-                $("#" + id).text(" " + newUpvote);
+                var newUpvote = parseInt($("." + id).text()) + 1;
+                $("." + id).text(" " + newUpvote);
                 if (data.Votes > mostPopularVotes){
                     mostPopular = data;
                     mostPopularVotes = data.Votes;
                     var pop = "";
                     pop += '<div class="popCard"><img src="'+ data.Image + '"width="100%" class="image">';
-                    pop += '<div class="caption"><span id="' + data._id + '" class="glyphicon glyphicon-heart upvote"> ' + data.Votes + ' </span>';
+                    pop += '<div class="caption"><span id="' + data._id + '" class="' + data._id + ' glyphicon glyphicon-heart upvote"> ' + data.Votes + ' </span>';
                     pop += '<p>' + data.Caption +'</p></div></div>';
                     $(".trending").html(pop);
                 }
@@ -109,7 +110,7 @@ $(document).ready(function() {
             for (var i = data.length - 1; i >= 0; i--) {
                 var com = data[i]; //comment];
                 everything += '<div class="imageCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                everything += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
+                everything += '<div class="caption"><span id="' + com._id + '" class="' + com._id + ' glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
                 everything += '<p>' + com.Caption +'</p></div></div>';
                 
                 if (com.Votes > mostPopularVotes){
@@ -120,9 +121,9 @@ $(document).ready(function() {
             $("#comments").html(everything);
             if (mostPopular != null){
                 var pop = "";
-                pop += '<div class="popCard"><img src="'+ com.Image + '"width="100%" class="image">';
-                pop += '<div class="caption"><span id="' + com._id + '" class="glyphicon glyphicon-heart upvote"> ' + com.Votes + ' </span>';
-                pop += '<p>' + com.Caption +'</p></div></div>';
+                pop += '<div class="popCard"><img src="'+ mostPopular.Image + '"width="100%" class="image">';
+                pop += '<div class="caption"><span id="' + mostPopular._id + '" class="' + mostPopular._id + ' glyphicon glyphicon-heart upvote"> ' + mostPopular.Votes + ' </span>';
+                pop += '<p>' + mostPopular.Caption +'</p></div></div>';
                 $(".trending").html(pop);
             }
             resize();
