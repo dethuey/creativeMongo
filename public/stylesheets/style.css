@@ -2,7 +2,7 @@ body {
   padding: 50px;
   font-family: 'Kodchasan', sans-serif;
   font-size: 20px;
-  background-color:#f2e2bf;
+  background-color:#efefef;
   color:#3f3f3f;
   width:100%;
 }
@@ -12,29 +12,24 @@ a {
 }
 
 .title {
-  padding-top:1%;
-  padding-left:10%;
-  padding-bottom: 1%;
+  margin-left:10%;
   margin-bottom: 3%;
-  color:#f2e2bf;
-  background-color:#5e6524;
-  font-weight: bold;
 }
 
 .form{
   width:25%;
   float:left;
-  color:#673718;
+  min-width: 250px;
 }
 
 .trending {
-  margin-top: 80px;
+  margin-top: 50px;
   padding:20px;
   border:solid;
   border-color: #cc510b;
-  border-width: 1em;
   width:100%;
 }
+
 .buffer {
   width:5%;
   float:left;
@@ -61,10 +56,16 @@ h2{
 }
 
 .imageCard{
-  width:95%;
-  color:#673718;
-  background-color:#eead3d;
+  width:45%;
+  background-color:lightgray;
   padding:15px;
   margin:5px;
+  display:inline-block;
+}
+
+.popCard{
+  width:100%;
+  background-color:lightgray;
+  padding:15px;
   display:inline-block;
 }
